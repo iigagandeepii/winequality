@@ -1,0 +1,110 @@
+"C:\\Users\\Gagan Deep\\Documents\\loan_prediction\\whitewine.csv"
+from sklearn.svm import SVR
+from sklearn.datasets import load_boston
+from sklearn import model_selection
+from sklearn.metrics import accuracy_score
+
+from pandas import read_csv
+from sklearn.model_selection import train_test_split
+choice = int(input("enter 1 for red wine quality checking and enter 2 for white wine quality checking"))
+
+if choice==2 :
+
+    a1 = float(input("Enter a list of the following values of the wine while entering return for every value : \n1. fixed acidity\n2. volatile acidity\n3.citric acid\n4.residual sugar\5.chlorides\n6.free sulphur dioxide\n7. total sulfur dioxide\n8. density\n9. pH\n10. sulfates\n11.alcohol\n "))
+    a2 = float(input())
+    a3 = float(input())
+    a4 = float(input())
+    a5 = float(input())
+    a6 = float(input())
+    a7 = float(input())
+    a8 = float(input())
+    a9 = float(input())
+    a10 =float(input())
+    a11= float(input())
+    attlist=[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11]
+    print (attlist)
+    import pandas as pd
+    a=pd.DataFrame([attlist])
+
+    dset=read_csv("C:\\Users\\Gagan Deep\\Documents\\loan_prediction\\whitewine.csv")
+    X=dset.drop("quality",axis=1)
+    Y=dset["quality"]
+    X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=0.1)
+    svm_model=SVR()
+    svm_model.fit(X_train,Y_train)
+    Y_predicted=svm_model.predict(X_test)
+    yp=svm_model.predict(a)
+    if(int(yp)>=9.5):
+        print (10)
+    if (int(yp)<9.5 and int(yp)>=8.5):
+        print(9)
+    if (int(yp)<8.5 and int(yp)>=7.5):
+        print(8)
+    if (int(yp)<7.5 and int(yp)>=6.5):
+        print(7)
+    if (int(yp)<6.5 and int(yp)>=5.5):
+        print(6)
+    if (int(yp)<5.5 and int(yp)>=4.5):
+        print(5)
+    if (int(yp)<4.5 and int(yp)>=3.5):
+        print(4)
+    if (int(yp)<3.5 and int(yp)>=2.5):
+        print(3)
+    if (int(yp)<2.5 and int(yp)>=1.5):
+        print(2)
+    if (int(yp)<1.5 and int(yp)>=0.5):
+        print(1)
+    if (int(yp)<0.5):
+        print(0)
+
+elif choice==1:
+    a1 = float(input(
+        "Enter a list of the following values of the wine while entering return for every value : \n1. fixed acidity\n2. volatile acidity\n3.citric acid\n4.residual sugar\5.chlorides\n6.free sulphur dioxide\n7. total sulfur dioxide\n8. density\n9. pH\n10. sulfates\n11.alcohol\n "))
+    a2 = float(input())
+    a3 = float(input())
+    a4 = float(input())
+    a5 = float(input())
+    a6 = float(input())
+    a7 = float(input())
+    a8 = float(input())
+    a9 = float(input())
+    a10 = float(input())
+    a11 = float(input())
+    attlist = [a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11]
+    print(attlist)
+    import pandas as pd
+
+    a = pd.DataFrame([attlist])
+    dset = read_csv("C:\\Users\\Gagan Deep\\Documents\\loan_prediction\\redwinemain.csv")
+    X = dset.drop("quality", axis=1)
+    Y = dset["quality"]
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.1)
+    svm_model = SVR()
+    svm_model.fit(X_train, Y_train)
+    Y_predicted = svm_model.predict(X_test)
+    yp = svm_model.predict(a)
+    if (int(yp) >= 9.5):
+        print(10)
+    if (int(yp) < 9.5 and int(yp) >= 8.5):
+        print(9)
+    if (int(yp) < 8.5 and int(yp) >= 7.5):
+        print(8)
+    if (int(yp) < 7.5 and int(yp) >= 6.5):
+        print(7)
+    if (int(yp) < 6.5 and int(yp) >= 5.5):
+        print(6)
+    if (int(yp) < 5.5 and int(yp) >= 4.5):
+        print(5)
+    if (int(yp) < 4.5 and int(yp) >= 3.5):
+        print(4)
+    if (int(yp) < 3.5 and int(yp) >= 2.5):
+        print(3)
+    if (int(yp) < 2.5 and int(yp) >= 1.5):
+        print(2)
+    if (int(yp) < 1.5 and int(yp) >= 0.5):
+        print(1)
+    if (int(yp) < 0.5):
+        print(0)
+
+else:
+    print("INVALID CHOICE")
